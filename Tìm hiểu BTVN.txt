@@ -1,0 +1,178 @@
+1. Tìm hiểu Framework
+1. Cucumber + Serenity BDD + Screenplay
+Cucumber
+
+Cucumber là framework hỗ trợ Behavior Driven Development (BDD).
+Test case được viết bằng ngôn ngữ gần giống tiếng Anh gọi là Gherkin với cấu trúc:
+
+Feature: Login
+
+Scenario: Login successful
+  Given user opens login page
+  When user enters username and password
+  Then user should see dashboard
+Serenity BDD
+
+Serenity BDD là framework giúp:
+
+Quản lý automation test
+Tạo báo cáo test đẹp
+Tích hợp với Cucumber, JUnit, Selenium
+
+Serenity giúp:
+
+Viết test dễ đọc
+Tự động tạo test report chi tiết
+Hỗ trợ nhiều framework khác
+Screenplay Pattern
+
+Screenplay là design pattern cho automation test.
+
+Các thành phần chính:
+
+Thành phần	Ý nghĩa
+Actor	Người thực hiện hành động
+Task	Nhiệm vụ
+Action	Hành động cụ thể
+Question	Kiểm tra kết quả
+
+Ví dụ:
+
+Actor user = Actor.named("User");
+
+user.attemptsTo(
+    Login.with(username, password)
+);
+
+user.should(
+    seeThat(Dashboard.isDisplayed())
+);
+
+Ưu điểm:
+
+Code dễ đọc
+Dễ bảo trì
+Có thể tái sử dụng
+2. Playwright
+
+Playwright là framework automation test do Microsoft phát triển.
+
+Playwright dùng để:
+
+Test Web application
+Test UI
+Test API
+Ngôn ngữ hỗ trợ
+JavaScript / TypeScript
+Python
+Java
+C#
+Các tính năng chính
+Chạy test trên nhiều browser
+Chrome
+Firefox
+WebKit
+Hỗ trợ parallel test
+Có auto wait
+Có network interception
+Screenshot và video khi test fail
+Ví dụ Playwright test
+import { test, expect } from '@playwright/test';
+
+test('login test', async ({ page }) => {
+  await page.goto('https://example.com/login');
+  await page.fill('#username', 'admin');
+  await page.fill('#password', '123456');
+  await page.click('#login');
+  await expect(page).toHaveURL('/dashboard');
+});
+2. Trả lời câu hỏi
+1. Automation test là gì?
+
+Automation test là quá trình sử dụng tool và script để tự động thực hiện các test case thay vì tester phải test bằng tay.
+
+Automation tool sẽ:
+
+Thực hiện các bước test
+So sánh kết quả thực tế với kết quả mong đợi
+Trả về kết quả PASS / FAIL.
+
+Ví dụ tool:
+
+Selenium
+Playwright
+Cypress
+Appium
+2. Tại sao cần automation test?
+
+Automation test cần thiết vì:
+
+1. Tiết kiệm thời gian
+
+Các test case lặp lại có thể chạy tự động nhiều lần.
+
+2. Tăng độ chính xác
+
+Máy tính giúp giảm lỗi do con người.
+
+3. Tăng tốc độ release
+
+Có thể test nhanh sau mỗi lần build.
+
+4. Chạy được nhiều test cùng lúc
+
+Có thể chạy parallel test trên nhiều môi trường.
+
+5. Phù hợp với CI/CD
+
+Automation test thường chạy trong pipeline như:
+
+Jenkins
+GitLab CI
+GitHub Actions
+3. Khi nào cần chạy kịch bản automation test?
+
+Automation test thường được chạy trong các trường hợp:
+
+1. Regression Test
+
+Sau khi code thay đổi cần test lại chức năng cũ.
+
+2. Smoke Test
+
+Test nhanh hệ thống sau khi build.
+
+3. Nightly Test
+
+Chạy test tự động vào ban đêm.
+
+4. Continuous Integration
+
+Chạy test sau mỗi lần commit code.
+
+5. Test lặp lại nhiều lần
+
+Ví dụ:
+
+Login
+Register
+Checkout
+4. Selenium có mấy loại? Kể tên
+
+Selenium là bộ công cụ automation test cho web.
+
+Selenium gồm 4 thành phần chính:
+
+1. Selenium IDE
+Plugin cho browser
+Record & playback test
+2. Selenium WebDriver
+Tool phổ biến nhất
+Viết script bằng code
+Hỗ trợ nhiều ngôn ngữ (Java, Python, C#, JS)
+3. Selenium Grid
+Chạy test song song trên nhiều máy
+Test nhiều browser cùng lúc
+4. Selenium RC (Remote Control)
+Phiên bản cũ
+Hiện nay đã bị thay thế bởi WebDriver
